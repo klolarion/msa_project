@@ -2,4 +2,7 @@
 
 
 펀딩계좌로 송금
-POST: /send
+POST: /account/send
+
+상품결제
+POST: /product/purchase
