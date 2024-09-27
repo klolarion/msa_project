@@ -2,31 +2,32 @@
 
 ## 1. 에러 처리 전략
 - **공통 에러 처리 방법**:
-    - 모든 서비스에서 공통된 에러 핸들러를 사용하여 일관된 에러 응답을 제공합니다.
-    - 에러 발생 시 에러 메시지와 코드, 추가 정보를 클라이언트에 전달합니다.
+  - 모든 서비스에서 공통된 에러 핸들러를 사용하여 일관된 에러 응답을 제공합니다.
+  - 에러 발생 시 에러 메시지와 코드, 추가 정보를 클라이언트에 전달합니다.
 
 - **에러 코드 정의**:
-    - `400`: 잘못된 요청 (Bad Request)
-    - `401`: 인증 실패 (Unauthorized)
-    - `403`: 권한 거부 (Forbidden)
-    - `404`: 자료 없음 (Not Found)
-    - `409`: 중복, 검증 실패 (Conflict)
-    - `500`: 서버 내부 오류 (Internal Server Error)
-    - `503`: 서비스 사용 불가 (Service Unavailable)
+  - `400`: 잘못된 요청 (Bad Request)
+  - `401`: 인증 실패 (Unauthorized)
+  - `403`: 권한 거부 (Forbidden)
+  - `404`: 자료 없음 (Not Found)
+  - `409`: 중복, 검증 실패 (Conflict)
+  - `500`: 서버 내부 오류 (Internal Server Error)
+  - `503`: 서비스 사용 불가 (Service Unavailable)
 
 - **예외 처리 방안**:
-    - 데이터베이스 연결 실패 시 재시도 로직 적용.
-    - 네트워크 오류 발생 시 일정 시간 후 재시도.
+  - 데이터베이스 연결 실패 시 재시도 로직 적용.
+  - 네트워크 오류 발생 시 일정 시간 후 재시도.
 
 - **에러 응답 형식**:
-  ```json
-  {
-      "error": {
-          "code": 400,
-          "message": "Invalid request data",
-          "details": "The 'username' field is required."
-      }
-  }
+    ```json
+    {
+        "error": {
+            "code": 400,
+            "message": "Invalid request data",
+            "details": "The 'username' field is required."
+        }
+    }
+    ```
 
 ## 2. 로그 관리 및 저장 전략
 
