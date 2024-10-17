@@ -24,6 +24,12 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @PostMapping("/member")
+    public Member createMember(@RequestBody Member member) {
+        // 실제 환경에서는 비밀번호를 해시 처리 (bcrypt 등)
+        return memberService.createMember(member.getEmail(), member.getPasswordHash());
+    }
+
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody Map<String, String> request) {
         String email = request.get("email");

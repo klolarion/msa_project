@@ -18,7 +18,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private static final String[] PUBLIC_API_URL = {
-            "/api/**",
+            "/auth/**",
     };
 
     @Bean
@@ -32,10 +32,10 @@ public class SecurityConfig {
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         //경로 관리
         http.authorizeHttpRequests(authorize -> authorize
-//                        .anyRequest().permitAll()
-                        .requestMatchers(PUBLIC_API_URL).permitAll()
+                        .anyRequest().permitAll()
+//                        .requestMatchers(PUBLIC_API_URL).permitAll()
 //                        .requestMatchers(ADMIN_API_URL).hasRole("ADMIN")
-                        .anyRequest().authenticated()
+//                        .anyRequest().authenticated()
         );
 
         return http.build();
@@ -49,7 +49,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
