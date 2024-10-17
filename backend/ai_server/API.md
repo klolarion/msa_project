@@ -1,8 +1,12 @@
 AI 서버 API 명세서
 
 
-펀딩 성공률 예측
-GET: /expectations
+투자 성향 분석
+POST: /ai/analyze-profile
 
-추천상품
-GET: /recommends
+금융 상품 추천
+POST: /ai/recommend-products
+
+자산 및 소비 내역 분석
+POST: /ai/analyze-spendin
+

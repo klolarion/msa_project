@@ -1,21 +1,28 @@
 비지니스 서버 API 명세서
 
 
-사용자 정보 조회
-GET: /{memberId}
+### 오픈뱅킹 API ###
+계좌 목록 조회
+GET: /openbanking/accounts
 
-사용자 정보 수정
-PUT: /{memberId}
+계좌 생성
+POST: /openbanking/accounts
 
-상품 검색
-GET: /{searchText}
+거래 내역 조회
+GET: /openbanking/transactions?account_id=(required)
 
-펀딩생성
-POST: /funding/create
+자산 현황 조회
+POST: /openbanking/transfer
 
-펀딩조회
-GET: /funding/{fundingId}
 
-상품구매(펀딩완료)
-POST: /funding/complete/{fundingId}
+### 마이데이터 API ###
+
+자산 현황 조회
+GET: /mydata/assets
+
+소비 패턴 분석
+POST: /mydata/analysis
+
+데이터 수집 동의 처리
+POST: /mydata/consent
 
