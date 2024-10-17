@@ -6,7 +6,7 @@ MSA 프로젝트
 
 백엔드<br/>
 인증서버: Java SpringBoot<br/>
-결제서버: Kotlin SpringBoot<br/>
+결제서버: FastAPI<br/>
 AI서버: FastAPI<br/>
 비지니스 서버: Nest.js
 
