@@ -11,6 +11,6 @@ async function bootstrap() {
     credentials: true, // 쿠키와 인증 정보를 포함한 요청 허용
   });
 
-  await app.listen(3000);
+  await app.listen(8081);
 }
 bootstrap();
