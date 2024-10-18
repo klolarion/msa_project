@@ -25,7 +25,27 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	// Coroutine
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.7.3")
+
+	// MySQL
 	runtimeOnly("com.mysql:mysql-connector-j")
+
+	// Swagger 3.0.0
+	implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+
+	// Redis
+	implementation ("org.springframework.boot:spring-boot-starter-data-redis")
+
+	// JWT Dependencies
+	implementation ("io.jsonwebtoken:jjwt-api:0.11.5")
+	implementation ("io.jsonwebtoken:jjwt-impl:0.11.5")
+	implementation ("io.jsonwebtoken:jjwt-jackson:0.11.5") // JSON serialization
+
+
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.springframework.security:spring-security-test")
