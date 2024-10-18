@@ -1,3 +1,3 @@
 Payment Server
 
-FastAPI
+Kotlin Spring Boot
