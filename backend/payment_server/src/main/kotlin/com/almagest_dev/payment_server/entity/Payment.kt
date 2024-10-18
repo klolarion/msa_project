@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 enum class PaymentStatus {
-    PENDING, COMPLETED, FAILED
+    PENDING, COMPLETED, FAILED, CANCELED
 }
 
 @Entity
@@ -27,6 +27,7 @@ data class Payment(
         val paymentMethod: String,
 
         @Enumerated(EnumType.STRING)
+        @Column(nullable = false)
         var status: PaymentStatus = PaymentStatus.PENDING,
 
         val createdAt: LocalDateTime = LocalDateTime.now()

@@ -30,4 +30,14 @@ class PaymentController(private val paymentService: PaymentService) {
         val payments = paymentService.getPaymentsByUserId(userId)
         return ResponseEntity.ok(payments)
     }
+
+    //결제 취소
+    @PatchMapping("/{paymentId}/cancel")
+    fun cancelPayment(@PathVariable paymentId: Long): ResponseEntity<Payment> = runBlocking {
+        val canceledPayment = paymentService.cancelPayment(paymentId)
+        ResponseEntity.ok(canceledPayment)
+    }
+
+
+
 }

@@ -4,6 +4,9 @@ import com.almagest_dev.payment_server.entity.Payment
 import com.almagest_dev.payment_server.entity.PaymentStatus
 
 import com.almagest_dev.payment_server.repository.PaymentRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 @Service
@@ -43,6 +46,15 @@ class PaymentService(private val paymentRepository: PaymentRepository) {
 
         paymentRepository.save(payment)
     }
+
+    suspend fun cancelPayment(paymentId: Long): Payment = withContext(Dispatchers.IO) {
+        val payment = paymentRepository.findById(paymentId)
+            .orElseThrow { IllegalArgumentException("Payment not found") }
+
+        payment.status = PaymentStatus.CANCELED
+        paymentRepository.save(payment)
+    }
+
 
     fun getPaymentsByUserId(userId: String): List<Payment> {
         return paymentRepository.findByUserId(userId)
