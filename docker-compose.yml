@@ -1,0 +1,42 @@
+version: '3'
+services:
+  auth-server:
+    build: ./auth_server
+    ports:
+      - "8080:8080"
+
+  business-server:
+    build: ./business_server
+    ports:
+      - "8081:8081"
+
+  payment-server:
+    build: ./payment_server
+    ports:
+      - "8082:8082"
+
+  ai-server:
+    build: ./ai_server
+    ports:
+      - "8083:8083"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - auth-server
+      - business-server
+      - payment-server
+      - ai-server
+      - redis
+
+  redis:
+    image: redis:alpine  # Redis 공식 이미지 사용
+    ports:
+      - "6379:6379"
