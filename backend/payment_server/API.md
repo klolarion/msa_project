@@ -1,5 +1,6 @@
 결제/송금 서버 API 명세서
 
+localhost:8082
 
 결제 요청
 POST: /payments
