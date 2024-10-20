@@ -1,18 +1,17 @@
-# Node.js 이미지 사용
-FROM node:18-alpine
-
-# 작업 디렉터리 설정
+# ./backend/business_server/Dockerfile
+# Step 1: Build the Nest.js app
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# 프로젝트 파일 복사
-COPY . .
-
-# 의존성 설치 및 빌드
+COPY package.json package-lock.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
-# 애플리케이션 실행
-CMD ["npm", "run", "start:prod"]
-
-# 포트 지정
+# Step 2: Run the built application
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY package.json package-lock.json ./
+RUN npm install --production
 EXPOSE 8081
+CMD ["node", "dist/main"]

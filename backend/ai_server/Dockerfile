@@ -1,18 +1,16 @@
-# Python 이미지 사용
+# 1. Python 베이스 이미지 사용
 FROM python:3.9-slim
 
-# 작업 디렉터리 설정
-WORKDIR /app
+# 2. 작업 디렉터리 설정
+WORKDIR /backend/ai_server
 
-# 의존성 파일 복사 및 설치
+# 3. 필요한 파일 복사 및 의존성 설치
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 애플리케이션 파일 복사
+# 4. 전체 프로젝트 복사
 COPY . .
 
-# FastAPI 서버 실행
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8083", "--reload"]
-
-# 포트 지정
+# 5. FastAPI 서버 실행 (모듈 경로 명확히 지정)
 EXPOSE 8083
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8083", "--reload"]

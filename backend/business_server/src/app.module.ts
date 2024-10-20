@@ -9,13 +9,13 @@ import { Transaction } from './transactions/transaction.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'mysql',
       port: 3306,
       username: 'root',
       password: '123123',
       database: 'fintech_msa_db',
       entities: [Account, Transaction],
-      synchronize: false,
+      synchronize: true,
     }),
     AccountsModule,
     TransactionsModule,
