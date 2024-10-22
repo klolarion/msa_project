@@ -1,0 +1,57 @@
+# 컨테이너 생성과 환경변수, 포트매핑 등 관리
+apiVersion: apps/v1 # api 버전
+kind: Deployment # 생성할 리소스의 종류 명시
+metadata:
+  name: auth-server # 해당 Deployement의 이름. 고유해야함
+spec:
+  replicas: 2 # 복제본 수
+  selector:
+    matchLabels:
+      app: auth-server # Deployement가 관리할 Pod의 라벨
+  template:
+    metadata:
+      labels:
+        app: auth-server # Pod에 라벨 부여. selector에 설정한 라벨과 일치해야함
+    spec:
+      containers:
+        - name: auth-server # 컨테이너 이름
+          image: msa_project/auth-server:latest # 도커 이미지
+          ports:
+            - containerPort: 8080 # 포트설정
+          env: # 환경변수, 일부는 secrets에서 주입받음
+            - name: DB_HOST
+              value: "mysql"
+            - name: DB_PORT
+              value: "3306"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: global-secrets
+                  key: jwt-key
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: global-secrets
+                  key: db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: global-secrets
+                  key: db-password
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              value: "6379"
+---
+# 컨테이너 내부의 프로그램이 외부와 어떻게 통신할지 정의(Service)
+apiVersion: v1  # 서비스 버전
+kind: Service  # 서비스 정의
+metadata:
+  name: auth-server # 서비스 이름
+spec:
+  type: ClusterIP # 서비스 유형. 클러스터 내부에서만 접근 가능
+  selector:
+    app: auth-server # 리소스에서 설정한 라벨이 붙은 Pod와 연결됨
+  ports:
+    - port: 8080 # 외부접근포트
+      targetPort: 8080 # 내부포트

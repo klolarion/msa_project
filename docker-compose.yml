@@ -79,11 +79,16 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - auth-server
-      - business-server
-      - payment-server
-      - ai-server
-      - redis
+      auth-server:
+        condition: service_started
+      business-server:
+        condition: service_started
+      payment-server:
+        condition: service_started
+      ai-server:
+        condition: service_started
+      redis:
+        condition: service_healthy
     networks:
       - fintech
 
