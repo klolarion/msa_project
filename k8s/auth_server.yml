@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: auth-server # 컨테이너 이름
-          image: msa_project/auth-server:latest # 도커 이미지
+          image: auth-server:latest # 도커 이미지
           ports:
             - containerPort: 8080 # 포트설정
           env: # 환경변수, 일부는 secrets에서 주입받음

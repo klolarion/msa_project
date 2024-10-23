@@ -1,3 +1,5 @@
+package com.almagest_dev.auth_server.util;
+
 import java.security.SecureRandom;
 import java.util.Base64;
 

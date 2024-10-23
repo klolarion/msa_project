@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: msa_project/frontend:latest
+          image: frontend:latest
           ports:
             - containerPort: 5173  # React의 기본 포트
 ---

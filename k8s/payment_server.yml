@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: payment-server
-          image: msa_project/payment-server:latest
+          image: payment-server:latest
           ports:
             - containerPort: 8082
           env:

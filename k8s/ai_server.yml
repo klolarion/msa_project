@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ai-server
-          image: msa_project/ai-server:latest
+          image: ai-server:latest
           ports:
             - containerPort: 8083
           env:

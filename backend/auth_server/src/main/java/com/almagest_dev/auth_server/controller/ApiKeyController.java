@@ -1,3 +1,7 @@
+package com.almagest_dev.auth_server.controller;
+
+import com.almagest_dev.auth_server.entity.ApiKey;
+import com.almagest_dev.auth_server.service.ApiKeyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

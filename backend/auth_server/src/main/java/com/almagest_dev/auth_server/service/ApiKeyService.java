@@ -1,3 +1,8 @@
+package com.almagest_dev.auth_server.service;
+
+import com.almagest_dev.auth_server.entity.ApiKey;
+import com.almagest_dev.auth_server.repository.ApiKeyRepository;
+import com.almagest_dev.auth_server.util.ApiKeyGenerator;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;

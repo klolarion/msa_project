@@ -44,6 +44,7 @@ const Dashboard: React.FC = () => {
                 <button onClick={() => navigate('/accounts')}>View Accounts</button>
                 <button onClick={() => navigate('/payments')}>Make a Payment</button>
                 <button onClick={() => navigate('/recommendations')}>Get Recommendations</button>
+                <button onClick={() => navigate('/keys')}>ApiKey</button>
             </div>
         </div>
     );

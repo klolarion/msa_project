@@ -32,4 +32,4 @@ spec:
   ports:
     - port: 3306            # 서비스의 포트
       targetPort: 3306      # 컨테이너 내부 포트
-      nodePort: 3700        # 클러스터 외부에서 접근할 포트
+      nodePort: 30070               # 클러스터 외부에서 접근할 포트
