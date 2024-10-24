@@ -14,7 +14,7 @@ import { InvestmentModule } from './investment/investment.module';
       host: 'mysql',
       port: 3306,
       username: 'root',
-      password: '1234',
+      password: '123123',
       database: 'fintech_msa_db',
       entities: ["dist/**/*.entity.js"],
       synchronize: true,

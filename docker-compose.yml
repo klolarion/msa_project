@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: fintech_msa_db
     ports:
       - "3700:3306"
@@ -104,3 +104,4 @@ networks:
 # docker network prune -f - 기본 네트워크 제외 모든 네트워크 삭제
 # docker-compose up -d --build -  빌드 후 실행
 # docker-compose down - 실행중지
+# docker builder prune -a - 빌드캐시삭제

@@ -3,7 +3,7 @@ from app.models import UserProfile, RecommendationResponse
 from app.recommender import recommend_products
 
 # 실행
-# uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+# uvicorn app.main:app --reload --host 0.0.0.0 --port 8083
 
 
 # FastAPI 애플리케이션 생성
